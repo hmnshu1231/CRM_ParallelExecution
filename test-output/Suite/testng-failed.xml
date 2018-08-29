@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="1" guice-stage="DEVELOPMENT" name="Failed suite [Suite]" parallel="classes">
+  <test thread-count="1" name="Test(failed)" parallel="classes">
+    <classes>
+      <class name="com.crm.testcases.SignUpPageTest">
+        <methods>
+          <include name="verifySignUpCrmLogoTest"/>
+          <include name="tearDown"/>
+          <include name="verifyEditionTextTest"/>
+          <include name="validateSignUpPageTest"/>
+          <include name="setUp"/>
+          <include name="verifySignUpFieldTextTest"/>
+          <include name="signUpPageAllFieldsTest"/>
+        </methods>
+      </class> <!-- com.crm.testcases.SignUpPageTest -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->
