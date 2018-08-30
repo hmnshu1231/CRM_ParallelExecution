@@ -17,35 +17,24 @@ import org.testng.annotations.Parameters;
 import com.crm.Utility.AppConfig;
 import com.crm.Utility.WaitHelper;
 import com.crm.report.ExtentReport;
+import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
 public class TestEnvironment {
 
 	@Parameters("myBrowser")
-
 	@BeforeClass(alwaysRun = true)
 	public void setUp(@Optional String myBrowser) throws InterruptedException, NullPointerException, IOException {
 		System.out.println("*****************************************************");
 		System.out.println("launching Browser");
 		TestBase.appLoadPropertiesFile();
-
-		if (this.Parameters(myBrowser)) {
-			TestBase.getBrowser(myBrowser);
-		} else {
-			TestBase.getBrowser(AppConfig.getBrowser());
-		}
+		TestBase.getBrowser(myBrowser);
+		//TestBase.getBrowser(AppConfig.getBrowser());
 		TestBase.driver.get(AppConfig.getURL());
-		// TestBase.getBrowser(myBrowser);
-		// TestBase.getBrowser(AppConfig.getBrowser());
 		// TestBase.driver.navigate().to(AppConfig.getURL());
 		WaitHelper.setImplicitWait(20);
 		WaitHelper.setPageLoadTimeout(20);
 
-	}
-
-	private boolean Parameters(String string) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 	@BeforeTest
@@ -61,13 +50,11 @@ public class TestEnvironment {
 	@BeforeMethod()
 	public static void beforeMethod(Method result) {
 		ExtentReport.test = ExtentReport.extent.startTest(result.getName());
+		ExtentReport.test.getRunStatus();
+		ExtentReport.test.getTest();
 		ExtentReport.test.log(LogStatus.INFO, result.getName() + " Test has Started");
-		// ExtentReport.test.log(LogStatus.INFO, onTestStart(result));
-		// ExtentReport.test.getDescription();
-		// =result.getName().getClass().getAnnotations();
-		// String str = result.getName().getClass().getMethods().toString();
 		ExtentReport.test.assignAuthor("Himanshu Malviya QA");
-		ExtentReport.test.assignCategory("Sanity :: " + "DEV" + " :: API VERSION - " + "2.00");
+		ExtentReport.test.assignCategory("Regression :: " + "DEV" + " :: API VERSION - " + "2.00");
 
 	}
 
@@ -75,6 +62,19 @@ public class TestEnvironment {
 	public static void afterMethod(ITestResult result) throws IOException {
 		ExtentReport report = new ExtentReport();
 		report.getResult(result);
+		ExtentTest parent = ExtentReport.extent.startTest("Parent");
+
+		ExtentTest child1 = ExtentReport.extent.startTest("Child 1");
+		child1.log(LogStatus.INFO, "Info");
+
+		ExtentTest child2 = ExtentReport.extent.startTest("Child 2");
+		child2.log(LogStatus.PASS, "Pass");
+
+		parent
+		    .appendChild(child1)
+		    .appendChild(child2);
+		    
+		ExtentReport.extent.endTest(parent);
 	}
 
 	@AfterTest

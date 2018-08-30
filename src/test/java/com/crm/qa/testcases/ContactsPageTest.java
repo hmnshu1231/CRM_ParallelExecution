@@ -56,7 +56,7 @@ public class ContactsPageTest extends TestEnvironment {
 	@Test(priority = 4, enabled = true)
 	public void selectSingleContactsTest() {
 	contactsPage = homePage.clickOnContactsLink();
-		contactsPage.selectContactsByName("M Mukta Sharma");
+		contactsPage.selectContactsByName("Mukta Sharma");
 	}
 
 	@DataProvider

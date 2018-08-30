@@ -2,13 +2,13 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="ExtentReport for CRM Application">
 
-	<test name="ExtentReport CRM App Test Cases">
-		<parameter name="myBrowser" value="firefox" />
+	<test name="ExtentReport CRM App Test Cases-parallel 1">
+		<parameter name="myBrowser" value="chrome" />
 		<classes>
 			<class name="com.crm.qa.testcases.SignUpPageTest"></class>
-			<!-- <class name="com.crm.qa.testcases.LoginPageTest"></class> -->
-			<!-- <class name="com.crm.qa.testcases.HomePageTest"></class> -->
-			<!-- <class name="com.crm.qa.testcases.ContactsPageTest"></class> -->
+			<class name="com.crm.qa.testcases.LoginPageTest"></class>
+			<class name="com.crm.qa.testcases.HomePageTest"></class>
+			<class name="com.crm.qa.testcases.ContactsPageTest"></class>
 		</classes>
 	</test>
 </suite>

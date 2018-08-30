@@ -41,14 +41,14 @@ public class HomePageTest extends TestEnvironment {
 		Assert.assertEquals(homePageTitle, "CRMPRO", "Home page title not matched");
 	}
 
-	@Test(priority = 2, description = "This will Test User Name Label present on the Home Page",enabled=false)
+	@Test(priority = 2, description = "This will Test User Name Label present on the Home Page",enabled=true)
 	public void verifyUserNameTest() {
 		// testUtil.switchToFrame();
 		TestUtil.highLighter(TestBase.driver, HomePage.userNameLabel);
 		Assert.assertTrue(homePage.verifyCorrectUserName());
 	}
 
-	@Test(priority = 3, description = "This will Test click on the contacts link and lands onthe contactsPage",enabled=false)
+	@Test(priority = 3, description = "This will Test click on the contacts link and lands onthe contactsPage",enabled=true)
 	public void verifyContactsLinkTest() {
 		contactsPage = homePage.clickOnContactsLink();
 	}

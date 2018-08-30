@@ -39,7 +39,7 @@ public class SignUpPage extends TestBase {
 	@FindBy(name = "passwordconfirm")
 	WebElement confirmPassW;
 
-	@FindBy(xpath = "//span[contain(text(),'All fields are required.')]")
+	@FindBy(xpath = "//span[contains(text(),'All fields are required.')]")
 	WebElement fieldText;
 
 	@FindBy(name = "agreeTerms")
