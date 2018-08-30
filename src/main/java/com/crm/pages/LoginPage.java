@@ -120,9 +120,8 @@ public class LoginPage extends TestBase {
 	}
 
 	public boolean validateCRMlogos() {
-
 		JavascriptExecutor jse = (JavascriptExecutor) driver;
-		jse.executeScript("window.scrollBy(0, 200)");
+		jse.executeScript("window.scrollBy(0, 450)");
 		if (CRMtextLogo.isDisplayed() & salesPipelineLogo.isDisplayed() & marketingAutomationlogo.isDisplayed()
 				& getMobilelogo.isDisplayed()) {
 			System.out.println("All Links are Present on LoginPage");
@@ -131,8 +130,8 @@ public class LoginPage extends TestBase {
 	}
 
 	public boolean validateCRMlogosText() {
-		JavascriptExecutor jse = (JavascriptExecutor) driver;
-		jse.executeScript("window.scrollBy(0,200)");
+		// JavascriptExecutor jse = (JavascriptExecutor) driver;
+		// jse.executeScript("window.scrollBy(0,200)");
 		if (CRMText.isDisplayed() && salesPipelineText.isDisplayed() && marketingAutomationText.isDisplayed()
 				&& getMobileText.isDisplayed()) {
 			System.out.println("All logo's texts are Present on LoginPage");
@@ -144,8 +143,8 @@ public class LoginPage extends TestBase {
 
 	public boolean validateCRMHeaderText() {
 
-		JavascriptExecutor jse = (JavascriptExecutor) driver;
-		jse.executeScript("window.scrollBy(0,200)");
+		// JavascriptExecutor jse = (JavascriptExecutor) driver;
+		// jse.executeScript("window.scrollBy(0,200)");
 		if (CRMHeaderText.isDisplayed() && salesPipelineHeaderText.isDisplayed()
 				&& marketingAutomationHeaderText.isDisplayed() && getMobileHeaderText.isDisplayed()) {
 			System.out.println("All Links Header Text is Present on LoginPage");
@@ -174,15 +173,11 @@ public class LoginPage extends TestBase {
 	}
 
 	public HomePage login(String un, String pwd) {
-		try {
-			username.sendKeys(un);
-			password.sendKeys(pwd);
-			JavascriptExecutor jse = (JavascriptExecutor) driver;
-			jse.executeScript("arguments[0].click();", loginBtn);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 
+		username.sendKeys(un);
+		password.sendKeys(pwd);
+		JavascriptExecutor jse = (JavascriptExecutor) driver;
+		jse.executeScript("arguments[0].click();", loginBtn);
 		return new HomePage();
 	}
 

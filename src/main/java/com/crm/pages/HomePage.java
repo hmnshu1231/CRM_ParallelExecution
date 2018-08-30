@@ -13,7 +13,7 @@ public class HomePage extends TestBase {
 
 	@FindBy(xpath = "//*[contains(text(),'User: Himanshu Malviya')]")
 	@CacheLookup
-	WebElement userNameLabel;
+	public static WebElement userNameLabel;
 
 	@FindBy(xpath = "//a[contains(text(),'Contacts')]")
 	WebElement contactsLink;

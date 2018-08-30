@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [ExtentReport for CRM Application]" parallel="tests">
+  <parameter name="myBrowser" value="IE"/>
+  <test name="CRM App - ChromeTest(failed)" parallel="tests">
+    <parameter name="myBrowser" value="chrome"/>
+    <classes>
+      <class name="com.crm.qa.testcases.SignUpPageTest">
+        <methods>
+          <include name="verifySignUpFieldTextTest"/>
+          <include name="setUp"/>
+          <include name="setUp"/>
+          <include name="setUp"/>
+          <include name="initialization"/>
+          <include name="beforeMethod"/>
+          <include name="beforeMethod"/>
+          <include name="beforeMethod"/>
+          <include name="validateSignUpPageTest"/>
+          <include name="afterMethod"/>
+          <include name="tearDown"/>
+          <include name="tearDown"/>
+          <include name="tearDown"/>
+          <include name="testStart"/>
+          <include name="testStart"/>
+          <include name="testStart"/>
+          <include name="signUpPageAllFieldsTest"/>
+        </methods>
+      </class> <!-- com.crm.qa.testcases.SignUpPageTest -->
+    </classes>
+  </test> <!-- CRM App - ChromeTest(failed) -->
+  <test name="CRM App - IETest(failed)" parallel="tests">
+    <parameter name="myBrowser" value="IE"/>
+    <classes>
+      <class name="com.crm.qa.testcases.SignUpPageTest">
+        <methods>
+          <include name="verifySignUpFieldTextTest"/>
+          <include name="setUp"/>
+          <include name="setUp"/>
+          <include name="setUp"/>
+          <include name="initialization"/>
+          <include name="beforeMethod"/>
+          <include name="beforeMethod"/>
+          <include name="beforeMethod"/>
+          <include name="validateSignUpPageTest"/>
+          <include name="afterMethod"/>
+          <include name="verifySignUpCrmLogoTest"/>
+          <include name="tearDown"/>
+          <include name="tearDown"/>
+          <include name="tearDown"/>
+          <include name="testStart"/>
+          <include name="testStart"/>
+          <include name="testStart"/>
+          <include name="signUpPageAllFieldsTest"/>
+          <include name="verifyEditionTextTest"/>
+        </methods>
+      </class> <!-- com.crm.qa.testcases.SignUpPageTest -->
+    </classes>
+  </test> <!-- CRM App - IETest(failed) -->
+  <test name="CRM App - FirefoxTest(failed)" parallel="tests">
+    <parameter name="myBrowser" value="firefox"/>
+    <classes>
+      <class name="com.crm.qa.testcases.SignUpPageTest">
+        <methods>
+          <include name="verifySignUpFieldTextTest"/>
+          <include name="setUp"/>
+          <include name="setUp"/>
+          <include name="setUp"/>
+          <include name="initialization"/>
+          <include name="beforeMethod"/>
+          <include name="beforeMethod"/>
+          <include name="beforeMethod"/>
+          <include name="validateSignUpPageTest"/>
+          <include name="afterMethod"/>
+          <include name="verifySignUpCrmLogoTest"/>
+          <include name="tearDown"/>
+          <include name="tearDown"/>
+          <include name="tearDown"/>
+          <include name="testStart"/>
+          <include name="testStart"/>
+          <include name="testStart"/>
+          <include name="signUpPageAllFieldsTest"/>
+          <include name="verifyEditionTextTest"/>
+        </methods>
+      </class> <!-- com.crm.qa.testcases.SignUpPageTest -->
+    </classes>
+  </test> <!-- CRM App - FirefoxTest(failed) -->
+</suite> <!-- Failed suite [ExtentReport for CRM Application] -->

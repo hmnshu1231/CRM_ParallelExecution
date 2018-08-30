@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
@@ -21,7 +22,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.ie.InternetExplorerOptions;
-import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.Select;
@@ -45,24 +45,17 @@ public class TestBase {
 		prop.load(fis);
 	}
 
-	public static PhantomJSDriver getGhostDriver() {
-		File file = new File(System.getProperty("user.dir") + "/drivers/Phantomjs/phantomjs.exe");
-		System.setProperty("phantomjs.binary.path", file.getAbsolutePath());
-		driver = new PhantomJSDriver();
-		return (PhantomJSDriver) driver;
-	}
-
 	public static void getBrowser(String browser) {
 		System.out.println(System.getProperty("user.dir"));
 		if (System.getProperty("os.name").contains("Window")) {
 			if (browser.equalsIgnoreCase("firefox")) {
 				System.setProperty("webdriver.gecko.driver",
-						System.getProperty("user.dir") + "/drivers/geckodriver.exe");
+						System.getProperty("user.dir") + "/driver/FirefoxDriver/geckodriver.exe");
 				driver = new FirefoxDriver();
 				driver.manage().window().maximize();
 			} else if (browser.equalsIgnoreCase("chrome")) {
 				System.setProperty("webdriver.chrome.driver",
-						System.getProperty("user.dir") + "/drivers/ChromeDriver/chromedriver.exe");
+						System.getProperty("user.dir") + "/driver/ChromeDriver/chromedriver.exe");
 				ChromeOptions options = new ChromeOptions();
 				options.addArguments("--start-maximized");
 				options.addArguments("--disable-web-security");
@@ -77,7 +70,7 @@ public class TestBase {
 				driver.manage().window().maximize();
 			} else if (browser.equalsIgnoreCase("ie")) {
 				System.setProperty("webdriver.ie.driver",
-						System.getProperty("user.dir") + "/drivers/IEDriverServer340X32bit.exe");
+						System.getProperty("user.dir") + "/driver/IEDriver/IEDriverServer32.exe");
 				InternetExplorerOptions options = new InternetExplorerOptions();
 				options.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
 				options.setCapability(InternetExplorerDriver.IE_ENSURE_CLEAN_SESSION, true);
@@ -106,6 +99,9 @@ public class TestBase {
 		eventListener = new WebEventListener();
 		e_driver.register(eventListener);
 		driver = e_driver;
+		driver.manage().deleteAllCookies();
+		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+		driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
 	}
 
 	public static void loadPropertiesFile() throws IOException {
@@ -113,29 +109,6 @@ public class TestBase {
 		File file = new File(System.getProperty("user.dir") + "/src/main/java/com/crm/config/Locators.properties");
 		fis = new FileInputStream(file);
 		prop.load(fis);
-	}
-
-	public static WebElement getPhantomLocator(String locator) throws Exception {
-		String[] split = locator.split(":");
-		String locatorType = split[0];
-		String locatorValue = split[1];
-
-		if (locatorType.equalsIgnoreCase("ID") || locatorType.equalsIgnoreCase("Id"))
-			return getGhostDriver().findElement(By.id(locatorValue));
-		else if (locatorType.equalsIgnoreCase("Class") || locatorType.equalsIgnoreCase("ClassName"))
-			return getGhostDriver().findElement(By.className(locatorValue));
-		else if (locatorType.equalsIgnoreCase("xpath") || locatorType.equalsIgnoreCase("Xpath"))
-			return getGhostDriver().findElement(By.xpath(locatorValue));
-		else if (locatorType.equalsIgnoreCase("CSS") || locatorType.equalsIgnoreCase("CssSeclector"))
-			return getGhostDriver().findElement(By.cssSelector(locatorValue));
-		else if (locatorType.equalsIgnoreCase("LinkText"))
-			return getGhostDriver().findElement(By.linkText(locatorValue));
-		else if (locatorType.equalsIgnoreCase("TagName"))
-			return getGhostDriver().findElement(By.tagName(locatorValue));
-		else if (locatorType.equalsIgnoreCase("PartialLinkText"))
-			return getGhostDriver().findElement(By.partialLinkText(locatorValue));
-		else
-			throw new Exception("Unknown Locator type " + locatorType);
 	}
 
 	public static WebElement getLocator(String locator) throws Exception {
@@ -186,10 +159,6 @@ public class TestBase {
 
 	public static WebElement getWebElement(String elementName) throws Exception {
 		return getLocator(prop.getProperty(elementName));
-	}
-
-	public static WebElement getPhantomWebElement(String elementName) throws Exception {
-		return getPhantomLocator(prop.getProperty(elementName));
 	}
 
 	public static List<WebElement> getWebElements(String elementName) throws Exception {

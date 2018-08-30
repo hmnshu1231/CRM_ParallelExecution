@@ -7,6 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import com.crm.Utility.Analyzer.RetryAnalyzer;
 import com.crm.base.TestBase;
 import com.crm.base.TestEnvironment;
 import com.crm.pages.HomePage;
@@ -14,23 +15,23 @@ import com.crm.pages.LoginPage;
 import com.crm.pages.SignUpPage;
 
 public class LoginPageTest extends TestEnvironment {
-	
 
 	LoginPage loginPage;
 	HomePage homePage;
 	SignUpPage signUpPage;
 
-	/*************Initialization Page Class Variables*****************/
-	@BeforeClass
+	/************* Initialization Page Class Variables *****************/
+	@BeforeClass(dependsOnMethods = { "setUp" })
 	public void initialization() throws IOException {
-		//TestBase.driver.navigate().to(AppConfig.getURL());
-		//signUpPage = new SignUpPage();
+
 		loginPage = new LoginPage();
-		//loginPage.clickSignUpLink();
+		//homePage = loginPage.login(TestBase.prop.getProperty("username"), TestBase.prop.getProperty("password"));
+
 	}
+
 	@Test(priority = 1)
 	public void loginPageTitleTest() {
-		
+
 		String title = loginPage.validateLoginPageTitle();
 		Assert.assertEquals(title, "#1 Free CRM software in the cloud for sales and service");
 	}
@@ -61,7 +62,7 @@ public class LoginPageTest extends TestEnvironment {
 	}
 
 	// retryAnalyzer=Retry.class
-	@Test(priority = 6, groups = "LoginPage Logo Details")
+	@Test(priority = 6, groups = "LoginPage Logo Details", retryAnalyzer = RetryAnalyzer.class)
 	public void CRMlogosTest() {
 		Assert.assertTrue(loginPage.validateCRMlogos());
 	}
@@ -120,12 +121,8 @@ public class LoginPageTest extends TestEnvironment {
 
 	@Test(priority = 13, enabled = true)
 	public void loginTest() {
-		try {
-			homePage = loginPage.login(TestBase.prop.getProperty("username"), TestBase.prop.getProperty("password"));
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
+		homePage = loginPage.login(TestBase.prop.getProperty("username"), TestBase.prop.getProperty("password"));
 	}
 
 }

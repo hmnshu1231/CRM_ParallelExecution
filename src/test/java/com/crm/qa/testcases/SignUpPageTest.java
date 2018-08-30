@@ -17,8 +17,8 @@ public class SignUpPageTest extends TestEnvironment {
 	Select select;
 
 	
-	@BeforeClass
-	public void initialization() throws IOException {
+	@BeforeClass(dependsOnMethods={"setUp"})
+	public void initialization() throws InterruptedException, NullPointerException, IOException {
 		//TestBase.driver.navigate().to(AppConfig.getURL());
 		
 		signUpPage = new SignUpPage();

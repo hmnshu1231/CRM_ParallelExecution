@@ -14,6 +14,7 @@ import com.crm.pages.HomePage;
 import com.crm.pages.LoginPage;
 
 public class HomePageTest extends TestEnvironment {
+	
 	LoginPage loginPage;
 	HomePage homePage;
 	TestUtil testUtil;
@@ -24,30 +25,31 @@ public class HomePageTest extends TestEnvironment {
 	// @test -- execute test case
 	// after each test case -- close the browser
 	/************* Initialization Page Class Variables *****************/
-	@BeforeClass
+	@BeforeClass(dependsOnMethods={"setUp"})
 	public void initialization() throws IOException {
-		
+
 		testUtil = new TestUtil();
 		contactsPage = new ContactsPage();
 		loginPage = new LoginPage();
 		homePage = loginPage.login(TestBase.prop.getProperty("username"), TestBase.prop.getProperty("password"));
+		testUtil.switchToFrame();
 	}
 
-	@Test(priority = 1)
+	@Test(priority = 1, description = "This will Test Title of the Home Page")
 	public void verifyHomePageTitleTest() {
 		String homePageTitle = homePage.verifyHomePageTitle();
 		Assert.assertEquals(homePageTitle, "CRMPRO", "Home page title not matched");
 	}
 
-	@Test(priority = 2)
+	@Test(priority = 2, description = "This will Test User Name Label present on the Home Page",enabled=false)
 	public void verifyUserNameTest() {
-		testUtil.switchToFrame();
+		// testUtil.switchToFrame();
+		TestUtil.highLighter(TestBase.driver, HomePage.userNameLabel);
 		Assert.assertTrue(homePage.verifyCorrectUserName());
 	}
 
-	@Test(priority = 3)
+	@Test(priority = 3, description = "This will Test click on the contacts link and lands onthe contactsPage",enabled=false)
 	public void verifyContactsLinkTest() {
-
 		contactsPage = homePage.clickOnContactsLink();
 	}
 

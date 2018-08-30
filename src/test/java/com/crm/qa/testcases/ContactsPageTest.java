@@ -28,7 +28,7 @@ public class ContactsPageTest extends TestEnvironment {
 	ContactsPage contactsPage;
 	String sheetName = "contacts";
 
-	@BeforeClass
+	@BeforeClass(dependsOnMethods={"setUp"})
 	public void initialization() throws IOException {
 
 		testUtil = new TestUtil();
@@ -36,18 +36,18 @@ public class ContactsPageTest extends TestEnvironment {
 		loginPage = new LoginPage();
 		homePage = loginPage.login(TestBase.prop.getProperty("username"), TestBase.prop.getProperty("password"));
 		testUtil.switchToFrame();
-		// contactsPage = homePage.clickOnContactsLink();
+		contactsPage = homePage.clickOnContactsLink();
 	}
 
 	@Test(priority = 1, enabled = true)
 	public void verifyContactsPageLabel() {
-		contactsPage = homePage.clickOnContactsLink();
+		//contactsPage = homePage.clickOnContactsLink();
 		Assert.assertTrue(contactsPage.verifyContactsLabel(), "contacts label is missing on the page");
 	}
 
 	@Test(priority = 3, enabled = true)
 	public void selectMultipleContactsTest() {
-		contactsPage = homePage.clickOnContactsLink();
+		//contactsPage = homePage.clickOnContactsLink();
 		contactsPage.selectContactsByName("David Cris");
 		contactsPage.selectContactsByName("Mukta Sharma");
 
@@ -55,8 +55,8 @@ public class ContactsPageTest extends TestEnvironment {
 
 	@Test(priority = 4, enabled = true)
 	public void selectSingleContactsTest() {
-		contactsPage = homePage.clickOnContactsLink();
-		contactsPage.selectContactsByName("Miss Mukta Sharma");
+	contactsPage = homePage.clickOnContactsLink();
+		contactsPage.selectContactsByName("M Mukta Sharma");
 	}
 
 	@DataProvider
@@ -79,13 +79,14 @@ public class ContactsPageTest extends TestEnvironment {
 	@Test(priority = 5, dataProvider = "CRMTestData", enabled = true)
 	public void deleteContactsFromList(String title, String firstName, String lastName, String company)
 			throws InterruptedException {
-
+		
 		contactsPage.selectContactsByData(firstName);
 
 	}
 
 	@Test(dependsOnMethods = { "deleteContactsFromList" })
 	public void deleteSelectedContacts() throws InterruptedException {
+		
 		contactsPage.deleteContactsNew();
 	}
 }

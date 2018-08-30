@@ -33,8 +33,8 @@ public class ExtentReport {
 		TestBase TB = new TestBase();
 
 		if (result.getStatus() == ITestResult.SUCCESS) {
-			String screen = TB.getScreenShot("");
-			test.log(LogStatus.PASS, test.addScreenCapture(screen));
+//			String screen = TB.getScreenShot("");
+//			test.log(LogStatus.PASS, test.addScreenCapture(screen));
 			test.log(LogStatus.PASS, result.getName() + " Test Passed Successfully");
 		} else if (result.getStatus() == ITestResult.SKIP) {
 			test.log(LogStatus.SKIP, result.getName() + " Test is skipped due to: " + result.getThrowable());

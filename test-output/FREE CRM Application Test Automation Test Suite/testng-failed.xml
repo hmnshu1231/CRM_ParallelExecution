@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="2" guice-stage="DEVELOPMENT" name="Failed suite [FREE CRM Application Test Automation Test Suite]" parallel="methods">
+  <test thread-count="2" name="Free CRM App Test Cases(failed)" parallel="methods">
+    <classes>
+      <class name="com.crm.qa.testcases.SignUpPageTest">
+        <methods>
+          <include name="verifySignUpFieldTextTest"/>
+          <include name="setUp"/>
+          <include name="afterMethod"/>
+          <include name="initialization"/>
+          <include name="testResult"/>
+          <include name="tearDown"/>
+          <include name="testStart"/>
+          <include name="signUpPageAllFieldsTest"/>
+          <include name="beforeMethod"/>
+          <include name="validateSignUpPageTest"/>
+        </methods>
+      </class> <!-- com.crm.qa.testcases.SignUpPageTest -->
+      <class name="com.crm.qa.testcases.LoginPageTest">
+        <methods>
+          <include name="setUp"/>
+          <include name="validateSalesPipelineDescriptionTest"/>
+          <include name="testResult"/>
+          <include name="validateCRMHeaderTextTest"/>
+          <include name="loginPageTitleTest"/>
+          <include name="beforeMethod"/>
+          <include name="CRMlogosTest"/>
+          <include name="allLinkTexts"/>
+          <include name="validateMarketingAutomationDescriptionTest"/>
+          <include name="validateCRMLogoDescriptionTest"/>
+          <include name="initialization"/>
+          <include name="validateGetMobileDescriptionTest"/>
+          <include name="afterMethod"/>
+          <include name="signUpBtnTest"/>
+          <include name="forgotPassLinkTest"/>
+          <include name="tearDown"/>
+          <include name="testStart"/>
+          <include name="validateCRMlogoText"/>
+          <include name="loginTest"/>
+        </methods>
+      </class> <!-- com.crm.qa.testcases.LoginPageTest -->
+    </classes>
+  </test> <!-- Free CRM App Test Cases(failed) -->
+</suite> <!-- Failed suite [FREE CRM Application Test Automation Test Suite] -->

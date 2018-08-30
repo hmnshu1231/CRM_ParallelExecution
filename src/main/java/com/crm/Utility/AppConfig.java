@@ -7,7 +7,7 @@ import java.util.Properties;
 
 public class AppConfig 
 {
-	static File appFile = new File("C:\\Users\\Himanshu\\eclipse-workspace\\ExtentReportForCRM\\src\\main\\java\\com\\crm\\config\\Application.properties");
+	static File appFile = new File("C:\\Users\\Himanshu\\eclipse-workspace\\ParallelExecution\\src\\main\\java\\com\\crm\\config\\Application.properties");
 	static FileInputStream fis;
 	static Properties prop = new Properties();
 	
