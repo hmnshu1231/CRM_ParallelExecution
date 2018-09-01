@@ -1,0 +1,15 @@
+com\crm\Utility\Analyzer\MyTransformer.class
+com\crm\pages\SignUpPage.class
+com\crm\base\TestBase.class
+com\crm\base\TestEnvironment.class
+com\crm\pages\LoginPage.class
+com\crm\Utility\TestUtil.class
+com\crm\Utility\WaitHelper.class
+com\crm\pages\ContactsPage.class
+com\crm\pages\HomePage.class
+com\crm\report\ExtentReport.class
+com\crm\testData\ExcelReader.class
+com\crm\Utility\DropDownHelper.class
+com\crm\Utility\WebEventListener.class
+com\crm\Utility\AppConfig.class
+com\crm\Utility\Analyzer\RetryAnalyzer.class
