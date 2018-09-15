@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Extent Report for CRM Application]">
+  <parameter name="myBrowser" value="chrome"/>
+  <test name="CRM App - ChromeTest(failed)">
+    <parameter name="myBrowser" value="chrome"/>
+    <classes>
+      <class name="com.crm.qa.testcases.SignUpPageTest">
+        <methods>
+          <include name="verifySignUpFieldTextTest"/>
+          <include name="setUp"/>
+          <include name="verifySignUpCrmLogoTest"/>
+          <include name="tearDown"/>
+          <include name="testStart"/>
+          <include name="signUpPageAllFieldsTest"/>
+          <include name="verifyEditionTextTest"/>
+          <include name="validateSignUpPageTest"/>
+        </methods>
+      </class> <!-- com.crm.qa.testcases.SignUpPageTest -->
+    </classes>
+  </test> <!-- CRM App - ChromeTest(failed) -->
+</suite> <!-- Failed suite [Extent Report for CRM Application] -->

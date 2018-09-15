@@ -6,6 +6,7 @@ import java.util.Date;
 
 import org.testng.ITestResult;
 
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.crm.Utility.AppConfig;
 import com.crm.base.TestBase;
 import com.relevantcodes.extentreports.ExtentReports;
@@ -16,6 +17,7 @@ public class ExtentReport {
 	public static ExtentReports extent;
 	public static ExtentTest test;
 	public static SimpleDateFormat sdf;
+	public static ExtentHtmlReporter htmlReporter;
 	// Extent Reporting
 	static {
 		sdf = new SimpleDateFormat("dd-MM-YYYY-hh-mm-SS");

@@ -100,9 +100,7 @@ public class TestBase {
 		e_driver.register(eventListener);
 		driver = e_driver;
 		driver.manage().deleteAllCookies();
-		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-		driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
-	}
+		}
 
 	public static void loadPropertiesFile() throws IOException {
 		prop = new Properties();

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="ExtentReport for CRM Application">
+<suite name="Extent Report for CRM Application">
 
-	<test name="ExtentReport CRM App Test Cases-parallel 1">
+	<test name="CRM App - ChromeTest">
 		<parameter name="myBrowser" value="chrome" />
 		<classes>
 			<class name="com.crm.qa.testcases.SignUpPageTest"></class>
-			<class name="com.crm.qa.testcases.LoginPageTest"></class>
-			<class name="com.crm.qa.testcases.HomePageTest"></class>
-			<class name="com.crm.qa.testcases.ContactsPageTest"></class>
+<!-- 			<class name="com.crm.qa.testcases.LoginPageTest"></class> -->
+<!-- 			<class name="com.crm.qa.testcases.HomePageTest"></class> -->
+<!-- 			<class name="com.crm.qa.testcases.ContactsPageTest"></class> -->
 		</classes>
 	</test>
 </suite>

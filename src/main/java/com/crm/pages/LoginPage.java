@@ -174,10 +174,16 @@ public class LoginPage extends TestBase {
 
 	public HomePage login(String un, String pwd) {
 
-		username.sendKeys(un);
-		password.sendKeys(pwd);
-		JavascriptExecutor jse = (JavascriptExecutor) driver;
-		jse.executeScript("arguments[0].click();", loginBtn);
+		try {
+			username.sendKeys(un);
+			password.sendKeys(pwd);
+			JavascriptExecutor jse = (JavascriptExecutor) driver;
+			jse.executeScript("arguments[0].click();", loginBtn);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return new HomePage();
 	}
 

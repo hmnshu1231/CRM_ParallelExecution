@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Extent Reoprt for CRM Application]">
+  <parameter name="myBrowser" value="chrome"/>
+  <test name="CRM App - ChromeTest(failed)">
+    <parameter name="myBrowser" value="chrome"/>
+    <classes>
+      <class name="com.crm.qa.testcases.HomePageTest">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="verifyUserNameTest"/>
+          <include name="verifyContactsLinkTest"/>
+          <include name="verifyHomePageTitleTest"/>
+        </methods>
+      </class> <!-- com.crm.qa.testcases.HomePageTest -->
+      <class name="com.crm.qa.testcases.ContactsPageTest">
+        <methods>
+          <include name="setUp"/>
+          <include name="selectMultipleContactsTest"/>
+          <include name="tearDown"/>
+          <include name="verifyContactsPageLabel"/>
+          <include name="deleteSelectedContacts"/>
+          <include name="validateCreateNewContact"/>
+          <include name="deleteContactsFromList"/>
+          <include name="selectSingleContactsTest"/>
+        </methods>
+      </class> <!-- com.crm.qa.testcases.ContactsPageTest -->
+      <class name="com.crm.qa.testcases.LoginPageTest">
+        <methods>
+          <include name="crmLogoImageTest"/>
+          <include name="setUp"/>
+          <include name="validateSalesPipelineDescriptionTest"/>
+          <include name="validateCRMHeaderTextTest"/>
+          <include name="loginPageTitleTest"/>
+          <include name="CRMlogosTest"/>
+          <include name="validateMarketingAutomationDescriptionTest"/>
+          <include name="allLinkTexts"/>
+          <include name="validateCRMLogoDescriptionTest"/>
+          <include name="validateGetMobileDescriptionTest"/>
+          <include name="signUpBtnTest"/>
+          <include name="forgotPassLinkTest"/>
+          <include name="tearDown"/>
+          <include name="validateCRMlogoText"/>
+          <include name="loginTest"/>
+        </methods>
+      </class> <!-- com.crm.qa.testcases.LoginPageTest -->
+      <class name="com.crm.qa.testcases.SignUpPageTest">
+        <methods>
+          <include name="setUp"/>
+          <include name="afterMethod"/>
+          <include name="initialization"/>
+          <include name="tearDown"/>
+          <include name="testStart"/>
+          <include name="beforeMethod"/>
+        </methods>
+      </class> <!-- com.crm.qa.testcases.SignUpPageTest -->
+    </classes>
+  </test> <!-- CRM App - ChromeTest(failed) -->
+</suite> <!-- Failed suite [Extent Reoprt for CRM Application] -->

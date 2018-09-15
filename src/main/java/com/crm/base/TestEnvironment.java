@@ -18,6 +18,7 @@ import com.crm.Utility.AppConfig;
 import com.crm.Utility.WaitHelper;
 import com.crm.report.ExtentReport;
 import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.HTMLReporter;
 import com.relevantcodes.extentreports.LogStatus;
 
 public class TestEnvironment {
@@ -29,7 +30,7 @@ public class TestEnvironment {
 		System.out.println("launching Browser");
 		TestBase.appLoadPropertiesFile();
 		TestBase.getBrowser(myBrowser);
-		//TestBase.getBrowser(AppConfig.getBrowser());
+		// TestBase.getBrowser(AppConfig.getBrowser());
 		TestBase.driver.get(AppConfig.getURL());
 		// TestBase.driver.navigate().to(AppConfig.getURL());
 		WaitHelper.setImplicitWait(20);
@@ -39,19 +40,19 @@ public class TestEnvironment {
 
 	@BeforeTest
 	public void testStart() throws IOException {
+	
 		ExtentReport.extent.addSystemInfo("Project Name", "Himanshu CRM Project");
 		ExtentReport.extent.addSystemInfo("Time Zone", System.getProperty("user.timezone"));
 		ExtentReport.extent.addSystemInfo("User Location", System.getProperty("user.country"));
 		ExtentReport.extent.addSystemInfo("OS version", System.getProperty("os.version"));
 		ExtentReport.extent.addSystemInfo("Java Version", System.getProperty("java.version"));
 		ExtentReport.extent.loadConfig(new File(AppConfig.getExtent_ConfigXML()));
+		
 	}
 
 	@BeforeMethod()
 	public static void beforeMethod(Method result) {
 		ExtentReport.test = ExtentReport.extent.startTest(result.getName());
-		ExtentReport.test.getRunStatus();
-		ExtentReport.test.getTest();
 		ExtentReport.test.log(LogStatus.INFO, result.getName() + " Test has Started");
 		ExtentReport.test.assignAuthor("Himanshu Malviya QA");
 		ExtentReport.test.assignCategory("Regression :: " + "DEV" + " :: API VERSION - " + "2.00");
@@ -70,10 +71,8 @@ public class TestEnvironment {
 		ExtentTest child2 = ExtentReport.extent.startTest("Child 2");
 		child2.log(LogStatus.PASS, "Pass");
 
-		parent
-		    .appendChild(child1)
-		    .appendChild(child2);
-		    
+		parent.appendChild(child1).appendChild(child2);
+
 		ExtentReport.extent.endTest(parent);
 	}
 
